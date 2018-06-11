@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 @MessageDriven(activationConfig = {
         @ActivationConfigProperty(
                 propertyName = "destinationLookup",
-                propertyValue = "java:/jms/topics/updateMongoDB")
+                propertyValue = ConfigureJMSDestinations.TOPIC_NAME)
 })
 public class VillainConsumer implements MessageListener {
 

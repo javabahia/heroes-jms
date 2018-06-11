@@ -23,12 +23,12 @@ public class VillainResource {
     @Inject
     private JMSContext jmsContext;
 
-    @Resource(lookup = "java:/jms/topics/updateMongoDB")
+    @Resource(lookup = ConfigureJMSDestinations.TOPIC_NAME)
     private Destination checkoutsTopic;
 
 
     @GET
-    public String findAll() {
+    public String sendTopic() {
         JMSProducer producer = jmsContext.createProducer();
         producer.send(checkoutsTopic, UUID.randomUUID().toString());
         return "Append in the queue";
